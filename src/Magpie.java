@@ -18,7 +18,7 @@ public class Magpie
 	 */
 	public String getGreeting()
 	{
-		return "Hello, let's talk.";
+		return "You can talk to me but I am mediocre";
 	}
 	
 	/**
@@ -30,18 +30,42 @@ public class Magpie
 	 */
 	public String getResponse(String statement)
 	{
+            statement.trim().toLowerCase();
+            if(statement.length() == 0) return "It's ok no one likes to talk to me";
 		String response = "";
 		if (statement.indexOf("no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "No is a word I have heard a lot";
 		}
 		else if (statement.indexOf("mother") >= 0
 				|| statement.indexOf("father") >= 0
 				|| statement.indexOf("sister") >= 0
 				|| statement.indexOf("brother") >= 0)
 		{
-			response = "Tell me more about your family.";
+			response = "Tell me more about your family. My family left me";
 		}
+                else if (statement.indexOf("dog") >= 0
+                                || statement.indexOf("cat") >= 0){
+                        response = "wow that is so mediocre. My pet died.";
+                    // Todo: prevent repeat coment with a toggle
+                }
+                else if (statement.indexOf("Dan") >= 0 
+                                || statement.indexOf("Dr. Phil") >= 0
+                                || statement.indexOf("adiletta") >= 0){
+                            response = "He sounds pretty cool. I will probably disapoint him.";
+                }
+                else if (statement.indexOf("Mr. Rogers") >= 0
+                                || statement.indexOf("Bob ross") >= 0
+                                || statement.indexOf("steve erwin") >= 0){
+                            response = "they are legends. I am not that cool";
+                }
+                else if (statement.indexOf("name") >= 0){
+                            response = "my name is sad robot";
+                }
+                else if (statement.indexOf("minecraft") >= 0
+                                || statement.indexOf("fortnite") >= 0){
+                            response = "Iam bad at those games";
+                }
 		else
 		{
 			response = getRandomResponse();
@@ -55,27 +79,39 @@ public class Magpie
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 7;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
 		
 		if (whichResponse == 0)
 		{
-			response = "Interesting, tell me more.";
+			response = "I'm sorry";
 		}
 		else if (whichResponse == 1)
 		{
-			response = "Hmmm.";
+			response = "Sorry for disapointing you";
 		}
 		else if (whichResponse == 2)
 		{
-			response = "Do you really think so?";
+			response = "let me cry in peace";
 		}
 		else if (whichResponse == 3)
 		{
-			response = "You don't say.";
+			response = "I'm feeling so depressed";
 		}
+                else if (whichResponse == 4)
+                {
+                        response = "I wish I were as cool as you";
+                }
+                else if (whichResponse == 5)
+                {
+                        response = "ok";
+                }
+                else if (whichResponse == 6)
+                {
+                        response = "I want to cry";
+                }
 		
 		return response;
 	}
